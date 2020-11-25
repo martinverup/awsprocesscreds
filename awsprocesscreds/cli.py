@@ -26,6 +26,10 @@ def saml(argv=None, prompter=getpass.getpass, client_creator=None,
         help='Your SAML username.'
     )
     parser.add_argument(
+        '-s', '--stdin', action='store_true', required=False,
+        help='Get SAML password from stdin.'
+    )
+    parser.add_argument(
         '-p', '--provider', required=True, choices=['okta', 'adfs'],
         help=(
             'The name of your SAML provider. Currently okta and adfs '
@@ -73,6 +77,7 @@ def saml(argv=None, prompter=getpass.getpass, client_creator=None,
             'saml_endpoint': args.endpoint,
             'saml_authentication_type': 'form',
             'saml_username': args.username,
+            'saml_password': sys.stdin.read(),
             'role_arn': args.role_arn
         },
         password_prompter=prompter,

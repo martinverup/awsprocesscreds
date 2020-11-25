@@ -181,8 +181,8 @@ class GenericFormsBasedAuthenticator(SAMLAuthenticator):
         else:
             form_data[self.USERNAME_FIELD] = username
         if self.PASSWORD_FIELD in form_data:
-            form_data[self.PASSWORD_FIELD] = self._password_prompter(
-                "Password: ")
+            password = config['saml_password'] if config['saml_password'] else self._password_prompter("Password: ")
+            form_data[self.PASSWORD_FIELD] = password
 
     def _send_form_post(self, login_url, form_data):
         response = self._requests_session.post(
