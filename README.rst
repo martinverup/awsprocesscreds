@@ -41,6 +41,7 @@ arguments:
 
 * ``-e / --endpoint`` - Your SAML idp endpoint.
 * ``-u / --username`` - Your SAML username.
+* ``-s / --stdin`` - Your SAML password is read from stdin.
 * ``-p / --provider`` - The name of your SAML provider. Currently okta and
   adfs are supported.
 * ``-a / --role-arn``- The role arn you wish to assume. Your SAML provider
